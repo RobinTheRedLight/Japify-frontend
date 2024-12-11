@@ -30,7 +30,7 @@ const Dashboard = () => {
         <Outlet />
         <label
           htmlFor="my-drawer-2"
-          className="flex btn btn-outline drawer-button lg:hidden fixed top-0 left-0 right-0"
+          className="flex btn btn-outline drawer-button lg:hidden fixed top-0 left-0 right-0 bg-white mx-4 my-1"
         >
           Open drawer
         </label>

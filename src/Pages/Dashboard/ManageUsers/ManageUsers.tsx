@@ -82,18 +82,18 @@ const ManageUsers = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 lg:p-8 lg:mt-0 mt-10">
+    <div className="h-screen container mx-auto p-4 lg:mt-0 mt-10">
       <Helmet>
         <title>Dashboard | Manage Users</title>
       </Helmet>
-      <div className="bg-white shadow-lg rounded-lg p-6 lg:p-8">
+      <div className="h-full bg-white  shadow-lg rounded-lg p-6 lg:p-8 ">
         <div className="flex flex-col lg:flex-row justify-between items-center mb-6">
           <h3 className="text-2xl lg:text-3xl font-semibold text-gray-800">
             Manage Users
           </h3>
           <div className="relative mt-4 lg:mt-0 w-full lg:w-1/3">
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-              <CiSearch className="h-6 w-6" />
+              <CiSearch className="h-6 w-6 text-gray-400" />
             </span>
             <input
               type="text"
@@ -105,7 +105,9 @@ const ManageUsers = () => {
             />
           </div>
         </div>
-        <div className="overflow-x-auto">
+
+        {/* Table View for Large Screens */}
+        <div className="hidden lg:block overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
@@ -195,6 +197,58 @@ const ManageUsers = () => {
               )}
             </tbody>
           </table>
+        </div>
+
+        {/* Card View for Small Screens */}
+        <div className="block lg:hidden">
+          {filteredUsers.length > 0 ? (
+            <div className="space-y-4">
+              {filteredUsers.map((user: User, index: number) => (
+                <div
+                  key={user._id}
+                  className="bg-white shadow-md rounded-lg p-4 flex flex-col"
+                >
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm text-gray-500">#{index + 1}</span>
+                    <span
+                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                        user.role === "admin"
+                          ? "bg-green-100 text-green-800"
+                          : "bg-yellow-100 text-yellow-800"
+                      }`}
+                    >
+                      {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+                    </span>
+                  </div>
+                  <div className="mb-2">
+                    <h4 className="text-lg font-medium text-gray-800">
+                      {user.name}
+                    </h4>
+                    <p className="text-sm text-gray-500">{user.email}</p>
+                  </div>
+                  <div className="mt-auto">
+                    <button
+                      onClick={() => openModal(user)}
+                      className={`w-full inline-flex items-center justify-center px-3 py-1 border border-transparent text-sm font-medium rounded-md shadow-sm text-white ${
+                        user.role === "admin"
+                          ? "bg-red-600 hover:bg-red-700"
+                          : "bg-green-600 hover:bg-green-700"
+                      } focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                        user.role === "admin"
+                          ? "focus:ring-red-500"
+                          : "focus:ring-green-500"
+                      }`}
+                      aria-label={`Change role for ${user.name}`}
+                    >
+                      {user.role === "admin" ? "Revoke Admin" : "Make Admin"}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center text-gray-500">No users found.</div>
+          )}
         </div>
       </div>
 
