@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSignUpMutation } from "../../redux/features/auth/authApi";
 import { SignupFormInputs } from "../../types/signUp.type";
 import registerImg from "../../assets/auth/register.jpg";
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
   const imageHostKey = import.meta.env.VITE_imgbb_key;
@@ -97,9 +98,12 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center  bg-white">
+      <Helmet>
+        <title>Japify | Sign Up</title>
+      </Helmet>
       <div className="flex flex-col md:flex-row  rounded-lg overflow-hidden w-full ">
         {/* Image Section */}
-        <div className="md:w-1/2 hidden md:block">
+        <div className="md:w-1/2 hidden lg:block">
           <img
             src={registerImg}
             alt="Register"

@@ -7,6 +7,7 @@ import { setUser } from "../../redux/features/auth/authSlice";
 import { LoginFormInputs } from "../../types/login.type";
 import { AppDispatch } from "../../redux/store";
 import loginImg from "../../assets/auth/login.jpg";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -46,7 +47,7 @@ const Login = () => {
 
         navigate(from, { replace: true });
       }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       const errorMessage =
         error?.data?.errorSources?.[0]?.message || "An error occurred";
@@ -65,6 +66,9 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex">
+      <Helmet>
+        <title>Japify | Login</title>
+      </Helmet>
       {/* Image Section */}
       <div
         className="hidden lg:flex w-1/2 bg-cover bg-center"
