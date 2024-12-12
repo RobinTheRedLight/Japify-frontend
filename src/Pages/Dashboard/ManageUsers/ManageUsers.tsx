@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Swal from "sweetalert2";
+import { Toaster, toast } from "sonner";
 import {
   useGetUsersQuery,
   useUpdateProfileMutation,
@@ -37,23 +37,12 @@ const ManageUsers = () => {
     try {
       const profileData = { role: newRole };
       await updateProfile({ profileData, id: user._id }).unwrap();
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: `User role updated to ${newRole}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      toast.success(`User role updated to ${newRole}`);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
-      Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "Failed to update user role",
-        text: err?.data?.message || "An unexpected error occurred.",
-        showConfirmButton: false,
-        timer: 2000,
-      });
+      const errorMessage =
+        err?.data?.message || "An unexpected error occurred.";
+      toast.error(errorMessage);
       console.error("Error updating user role:", err);
     }
   };
@@ -83,6 +72,7 @@ const ManageUsers = () => {
 
   return (
     <div className="h-screen container mx-auto p-4 lg:mt-0 mt-10">
+      <Toaster richColors position="top-right" />
       <Helmet>
         <title>Dashboard | Manage Users</title>
       </Helmet>

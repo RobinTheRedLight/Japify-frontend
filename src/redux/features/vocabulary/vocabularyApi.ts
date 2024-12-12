@@ -1,9 +1,9 @@
-import { IVocabulary } from "../../../types/vocabulary";
+import { IVocabulary, IVocabularyData, IVocabularySingleData } from "../../../types/vocabulary";
 import { baseApi } from "../../api/baseApi";
 
 export const vocabularyApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getVocabularies: builder.query<IVocabulary[], { lessonNo?: number }>({
+    getVocabularies: builder.query<IVocabularyData, { lessonNo?: number }>({
       query: ({ lessonNo }) => ({
         url: "/vocabularies",
         method: "GET",
@@ -12,7 +12,7 @@ export const vocabularyApi = baseApi.injectEndpoints({
       providesTags: ["Vocabularies"],
     }),
 
-    getSingleVocabulary: builder.query<IVocabulary, string>({
+    getSingleVocabulary: builder.query<IVocabularySingleData, string>({
       query: (id) => ({
         url: `/vocabularies/${id}`,
         method: "GET",
@@ -21,10 +21,10 @@ export const vocabularyApi = baseApi.injectEndpoints({
     }),
 
     createVocabulary: builder.mutation<IVocabulary, Partial<IVocabulary>>({
-      query: (body) => ({
+      query: (data) => ({
         url: "/vocabularies",
         method: "POST",
-        body,
+        body: data,
       }),
       invalidatesTags: ["Vocabularies", "Vocabulary"],
     }),
@@ -50,7 +50,6 @@ export const vocabularyApi = baseApi.injectEndpoints({
     }),
   }),
 });
-
 
 export const {
   useGetVocabulariesQuery,

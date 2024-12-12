@@ -9,3 +9,11 @@ export interface IVocabulary {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IVocabularyData {
+  data: IVocabulary[];
+}
+
+export interface IVocabularySingleData {
+  data: IVocabulary;
+}
