@@ -1,4 +1,4 @@
-import { ILesson, ILessonData } from "../../../types/lesson";
+import { ILesson, ILessonData, ILessonSingleData } from "../../../types/lesson";
 import { baseApi } from "../../api/baseApi";
 
 export const lessonApi = baseApi.injectEndpoints({
@@ -12,7 +12,7 @@ export const lessonApi = baseApi.injectEndpoints({
       providesTags: ["Lessons"],
     }),
 
-    getSingleLesson: builder.query<ILesson, string>({
+    getSingleLesson: builder.query<ILessonSingleData, string>({
       query: (id) => ({
         url: `/lessons/${id}`,
         method: "GET",

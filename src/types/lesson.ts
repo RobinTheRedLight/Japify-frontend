@@ -9,3 +9,7 @@ export interface ILesson {
 export interface ILessonData {
   data: ILesson[];
 }
+
+export interface ILessonSingleData {
+  data: ILesson;
+}

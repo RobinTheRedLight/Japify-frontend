@@ -12,6 +12,7 @@ import ManageVocab from "../Pages/Dashboard/ManageVocab/ManageVocab";
 import AddVocab from "../Pages/Dashboard/AddVocab/AddVocab";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import Lessons from "../Pages/Lessons/Lessons";
+import Lesson from "../Pages/Lesson/Lesson";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/lessons",
         element: <Lessons></Lessons>,
+      },
+      {
+        path: "/lessons/:id",
+        element: <Lesson></Lesson>,
       },
     ],
   },
