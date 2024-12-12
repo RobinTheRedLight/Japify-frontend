@@ -20,10 +20,10 @@ export const lessonApi = baseApi.injectEndpoints({
     }),
 
     createLesson: builder.mutation<ILesson, Partial<ILesson>>({
-      query: (body) => ({
+      query: (data) => ({
         url: "/lessons",
         method: "POST",
-        body,
+        body: data,
       }),
       invalidatesTags: ["Lessons", "Lesson"],
     }),
