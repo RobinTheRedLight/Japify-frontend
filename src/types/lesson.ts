@@ -1,7 +1,11 @@
 export interface ILesson {
-  id: string;
+  _id: string;
   name: string;
   number: number;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface ILessonData {
+  data: ILesson[];
 }

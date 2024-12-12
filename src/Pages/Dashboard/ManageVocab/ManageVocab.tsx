@@ -15,6 +15,7 @@ import {
   useGetVocabulariesQuery,
   useUpdateVocabularyMutation,
 } from "../../../redux/features/vocabulary/vocabularyApi";
+import Swal from "sweetalert2";
 
 interface IFilterForm {
   lessonNo?: string;
@@ -98,18 +99,28 @@ const ManageVocab = () => {
   };
 
   const handleDelete = async (id: string) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this vocabulary?"
-    );
-    if (!confirmDelete) return;
-    try {
-      await deleteVocabulary(id).unwrap();
-      toast.success("Vocabulary deleted successfully!");
-    } catch (error: any) {
-      const errorMessage =
-        error?.data?.message || "Failed to delete vocabulary.";
-      toast.error(errorMessage);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteVocabulary(id)
+          .unwrap()
+          .then(() => {
+            toast.success("Vocabulary deleted successfully!");
+          })
+          .catch((error: any) => {
+            const errorMessage =
+              error?.data?.message || "Failed to delete vocabulary.";
+            toast.error(errorMessage);
+          });
+      }
+    });
   };
 
   return (

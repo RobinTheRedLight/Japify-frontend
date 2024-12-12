@@ -38,7 +38,7 @@ const AddVocab = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen flex items-center justify-center p-4 mt-10 lg:mt-0">
       <Toaster richColors position="top-right" />
 
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-6">

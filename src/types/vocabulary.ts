@@ -1,5 +1,5 @@
 export interface IVocabulary {
-  id: string;
+  _id: string;
   word: string;
   pronunciation: string;
   meaning: string;
