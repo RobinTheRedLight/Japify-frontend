@@ -59,14 +59,14 @@ const Lessons = () => {
               </div>
 
               {/* Card Body with Large Lesson Number */}
-              <div className="flex-1 p-4 bg-gray-50 flex items-center justify-center">
+              <div className="flex-1 p-4 bg-white flex items-center justify-center">
                 <span className="text-3xl  font-bold text-indigo-500 text-center">
                   {lesson.name}
                 </span>
               </div>
 
               {/* Call to Action */}
-              <div className="p-4 border-t border-gray-100 bg-gray-50 ">
+              <div className="p-4  bg-white ">
                 <Link
                   to={`/lessons/${lesson._id}`}
                   className="inline-flex items-center px-4 py-2 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2 w-full justify-center"
