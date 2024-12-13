@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
-import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
@@ -13,6 +12,7 @@ import AddVocab from "../Pages/Dashboard/AddVocab/AddVocab";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import Lessons from "../Pages/Lessons/Lessons";
 import Lesson from "../Pages/Lesson/Lesson";
+import Tutorial from "../Pages/Tutorial/Tutorial";
 
 export const router = createBrowserRouter([
   {
@@ -26,7 +26,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Lessons></Lessons>,
       },
       {
         path: "/lessons",
@@ -35,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/lessons/:id",
         element: <Lesson></Lesson>,
+      },
+      {
+        path: "/tutorials",
+        element: <Tutorial></Tutorial>,
       },
     ],
   },

@@ -37,7 +37,6 @@ const Lesson = () => {
   const [showConfetti, setShowConfetti] = useState(false);
 
   useEffect(() => {
-    // Reset pagination when a new lesson loads
     setCurrentIndex(0);
   }, [lesson?.number]);
 
@@ -78,7 +77,7 @@ const Lesson = () => {
       return;
     }
     const utterance = new SpeechSynthesisUtterance(word);
-    utterance.lang = "ja-JP"; // Japanese
+    utterance.lang = "ja-JP";
     window.speechSynthesis.speak(utterance);
   };
 
@@ -99,7 +98,7 @@ const Lesson = () => {
     setTimeout(() => {
       setShowConfetti(false);
       navigate("/lessons");
-    }, 3000); // 3 seconds delay before redirect
+    }, 3000);
   };
 
   return (
@@ -110,7 +109,7 @@ const Lesson = () => {
 
       {/* Hero Section */}
       <div className="pt-5">
-        <div className="hero min-h-[30vh] max-w-5xl mx-auto bg-gradient-to-r from-green-500 to-emerald-600 flex flex-col items-center justify-center text-white p-10 ">
+        <div className="hero min-h-[30vh] max-w-7xl mx-auto bg-gradient-to-r from-green-500 to-emerald-600 flex flex-col items-center justify-center text-white p-10 ">
           <h1 className="text-3xl  md:text-4xl font-bold mb-2">
             Lesson: {lesson.name}
           </h1>

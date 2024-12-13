@@ -33,6 +33,11 @@ const Navbar = () => {
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex space-x-6 font-semibold">
+          {user?.role === "admin" && (
+            <Link to="/dashboard/lessonManage" className="hover:text-gray-200">
+              Dashboard
+            </Link>
+          )}
           {user ? (
             <>
               <Link to="/lessons" className="hover:text-gray-200">
@@ -55,12 +60,6 @@ const Navbar = () => {
                 Login
               </Link>
             </>
-          )}
-
-          {user?.role === "admin" && (
-            <Link to="/dashboard" className="hover:text-gray-200">
-              Dashboard
-            </Link>
           )}
         </div>
 
@@ -95,14 +94,30 @@ const Navbar = () => {
         } absolute top-0 left-0 w-full bg-white text-black z-40`}
       >
         <div className="px-6 py-4 space-y-4">
+          {user?.role === "admin" && (
+            <Link
+              to="/dashboard/lessonManage"
+              className="block text-black hover:bg-gray-700 rounded-md px-4 py-2"
+              onClick={handleLinkClick}
+            >
+              Dashboard
+            </Link>
+          )}
           {user ? (
             <>
               <Link
-                to="/dashboard/profile"
+                to="/lessons"
                 className="block text-black hover:bg-gray-700 rounded-md px-4 py-2"
                 onClick={handleLinkClick}
               >
-                Dashboard
+                Lessons
+              </Link>
+              <Link
+                to="/tutorials"
+                className="block text-black hover:bg-gray-700 rounded-md px-4 py-2"
+                onClick={handleLinkClick}
+              >
+                Tutorials
               </Link>
               <Link
                 to="/"
@@ -122,15 +137,6 @@ const Navbar = () => {
                 Login
               </Link>
             </>
-          )}
-          {user?.role === "admin" && (
-            <Link
-              to="/dashboard"
-              className="block text-black hover:bg-gray-700 rounded-md px-4 py-2"
-              onClick={handleLinkClick}
-            >
-              Dashboard
-            </Link>
           )}
         </div>
       </div>

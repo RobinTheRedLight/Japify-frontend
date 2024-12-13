@@ -2,6 +2,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { FaPlus, FaSpinner } from "react-icons/fa";
 import { Toaster, toast } from "sonner";
 import { useCreateVocabularyMutation } from "../../../redux/features/vocabulary/vocabularyApi";
+import { useAppSelector } from "../../../redux/hook";
+import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
+import { User } from "../../../types/user.type";
 
 interface IAddVocabForm {
   word: string;
@@ -21,6 +24,7 @@ const AddVocab = () => {
   } = useForm<IAddVocabForm>();
 
   const [createVocabulary, { isLoading }] = useCreateVocabularyMutation();
+  const user = useAppSelector(selectCurrentUser) as User;
 
   const onSubmit: SubmitHandler<IAddVocabForm> = async (data) => {
     console.log(data);
@@ -197,22 +201,21 @@ const AddVocab = () => {
                 htmlFor="adminEmail"
                 className="block text-gray-700 font-medium mb-2"
               >
-                Admin Email
+                Your Email
               </label>
               <input
                 id="adminEmail"
                 type="email"
-                placeholder="admin@example.com"
                 className={`w-full px-3 py-2 border ${
                   errors.adminEmail ? "border-red-500" : "border-gray-300"
                 } rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500`}
                 {...register("adminEmail", {
-                  required: "Admin email is required.",
-                  pattern: {
-                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                    message: "Invalid email format.",
+                  value: user?.email || "",
+                  onChange: () => {
+                    return;
                   },
                 })}
+                disabled
               />
               {errors.adminEmail && (
                 <p className="text-red-500 text-sm mt-1">

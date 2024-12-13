@@ -40,12 +40,13 @@ const Login = () => {
           title: "Login Successful",
           text: "You have successfully logged in.",
           showConfirmButton: false,
-          timer: 3000,
+          timer: 1000,
           toast: true,
           timerProgressBar: true,
         });
 
-        navigate(from, { replace: true });
+        if (result.data.role === "admin") navigate("/dashboard/lessonManage");
+        else navigate(from, { replace: true });
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {

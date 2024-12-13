@@ -29,13 +29,13 @@ const Lessons = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="pt-5 ">
-        <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 p-8 max-w-5xl mx-auto rounded-md flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg">
+        <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 p-8 max-w-7xl mx-auto rounded-md flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg">
           <TbChartBubbleFilled className="text-blue-600 text-4xl" />
           <span>Choose a Lesson</span>
         </h1>
       </div>
 
-      <div className="max-w-5xl mx-auto p-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3 ">
+      <div className="max-w-7xl mx-auto p-6 grid gap-8 md:grid-cols-2 lg:grid-cols-4 ">
         {lessons.length === 0 ? (
           <div className="col-span-full text-center text-gray-600">
             No lessons found.
@@ -60,7 +60,7 @@ const Lessons = () => {
 
               {/* Card Body with Large Lesson Number */}
               <div className="flex-1 p-4 bg-gray-50 flex items-center justify-center">
-                <span className="text-4xl font-bold text-indigo-500">
+                <span className="text-3xl  font-bold text-indigo-500 text-center">
                   {lesson.name}
                 </span>
               </div>
