@@ -18,6 +18,7 @@ import {
 import { ILesson } from "../../../types/lesson";
 import VocabCount from "./VocabCount";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 interface IFilterForm {
   lessonNo?: string;
@@ -118,6 +119,9 @@ const ManageLessons = () => {
 
   return (
     <div className="min-h-screen container mx-auto p-4 lg:mt-0 mt-10">
+      <Helmet>
+        <title>Japify | Manage Lessons</title>
+      </Helmet>
       <Toaster richColors position="top-right" />
 
       <div className="h-full max-w-6xl mx-auto bg-white rounded-lg shadow-md p-6 lg:p-8">

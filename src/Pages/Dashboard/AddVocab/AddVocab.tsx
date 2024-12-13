@@ -5,6 +5,7 @@ import { useCreateVocabularyMutation } from "../../../redux/features/vocabulary/
 import { useAppSelector } from "../../../redux/hook";
 import { selectCurrentUser } from "../../../redux/features/auth/authSlice";
 import { User } from "../../../types/user.type";
+import { Helmet } from "react-helmet-async";
 
 interface IAddVocabForm {
   word: string;
@@ -43,6 +44,9 @@ const AddVocab = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 mt-10 lg:mt-0">
+       <Helmet>
+        <title>Japify | Add Vocabulary</title>
+      </Helmet>
       <Toaster richColors position="top-right" />
 
       <div className="w-full max-w-4xl bg-white rounded-lg shadow-md p-6">

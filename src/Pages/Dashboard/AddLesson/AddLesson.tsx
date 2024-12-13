@@ -2,6 +2,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { FaPlus, FaSpinner } from "react-icons/fa";
 import { Toaster, toast } from "sonner";
 import { useCreateLessonMutation } from "../../../redux/features/lesson/lessonApi";
+import { Helmet } from "react-helmet-async";
 
 interface IAddLessonForm {
   name: string;
@@ -34,6 +35,9 @@ const AddLesson = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+       <Helmet>
+        <title>Japify | Add Lesson</title>
+      </Helmet>
       {/* Toaster for notifications */}
       <Toaster richColors position="top-right" />
 

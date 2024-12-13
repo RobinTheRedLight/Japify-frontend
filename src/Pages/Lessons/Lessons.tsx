@@ -3,6 +3,7 @@ import { useGetLessonsQuery } from "../../redux/features/lesson/lessonApi";
 import { ILesson } from "../../types/lesson";
 import { FaBookOpen } from "react-icons/fa";
 import { TbChartBubbleFilled } from "react-icons/tb";
+import { Helmet } from "react-helmet-async";
 
 const Lessons = () => {
   const {
@@ -28,6 +29,9 @@ const Lessons = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      <Helmet>
+        <title>Japify | Lessons</title>
+      </Helmet>
       <div className="pt-5 ">
         <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 p-8 max-w-7xl mx-auto rounded-md flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg">
           <TbChartBubbleFilled className="text-blue-600 text-4xl" />

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { FaBook, FaPlayCircle } from "react-icons/fa";
 
 interface Video {
@@ -55,6 +56,9 @@ const videos: Video[] = [
 const Tutorial = () => {
   return (
     <div className="min-h-screen bg-gray-100">
+      <Helmet>
+        <title>Japify | Tutorials</title>
+      </Helmet>
       {/* Header Section */}
       <header className="pt-5">
         <div className=" p-8 max-w-7xl mx-auto bg-gradient-to-l from-blue-50 to-blue-100 shadow-lg rounded-md">

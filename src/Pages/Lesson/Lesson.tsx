@@ -10,6 +10,7 @@ import {
   FaVolumeUp,
   FaCheckCircle,
 } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 
 const Lesson = () => {
   const { id } = useParams<{ id: string }>();
@@ -103,6 +104,9 @@ const Lesson = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      <Helmet>
+        <title>Japify | Lesson</title>
+      </Helmet>
       {showConfetti && (
         <Confetti width={window.innerWidth} height={window.innerHeight} />
       )}
